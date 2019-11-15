@@ -14,6 +14,8 @@ import Lists
 import Cipher
 import Folding
 import ADTs
+import Adversity
+
 
 -- type FirstName = String
 -- type LastName = String
