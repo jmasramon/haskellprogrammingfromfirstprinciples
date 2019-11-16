@@ -112,23 +112,38 @@ catMaybes = foldr extract []
     extract (Just x) acc = x:acc
 
 flipMaybe :: [Maybe a] -> Maybe [a]
-flipMaybe = undefined
+flipMaybe = foldr f (Just []) 
+    where 
+      f _ Nothing = Nothing
+      f Nothing _ =  Nothing
+      f (Just x) (Just acc) = Just (x:acc)
 
 
 lefts' :: [Either a b] -> [a]
-lefts' = undefined
+lefts' = foldr f []
+  where 
+    f (Left x) acc = (x:acc)
+    f (Right _) acc = acc
 
 rights' :: [Either a b] -> [b]
-rights' = undefined
+rights' = foldr f []
+  where 
+    f (Left _) acc = acc
+    f (Right y) acc = (y:acc)
 
 partitionEithers' :: [Either a b] -> ([a], [b])
-partitionEithers' = undefined
+partitionEithers' = foldr f ([],[])
+  where 
+    f (Left x) (ls, rs) = (x:ls, rs)
+    f (Right y) (ls, rs) = (ls, y:rs)
 
 eitherMaybe' :: (b -> c) -> Either a b -> Maybe c
-eitherMaybe' = undefined
+eitherMaybe' f (Left x) = Nothing
+eitherMaybe' f (Right y) = Just (f y)
 
 either'::(a->c)->(b->c)->Either a b->c
-either' = undefined
+either' f _ (Left x) = f x
+either' _ g (Right y) = g y
 
 eitherMaybe'' :: (b -> c) -> Either a b -> Maybe c
-eitherMaybe'' = undefined
+eitherMaybe'' f = either' (\_ -> Nothing) (\b -> Just $ f b)
