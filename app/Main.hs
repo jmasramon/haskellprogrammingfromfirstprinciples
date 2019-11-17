@@ -16,6 +16,7 @@ import Folding
 import ADTs
 import Adversity
 import Unfolds
+import BinaryTree
 
 
 -- type FirstName = String
