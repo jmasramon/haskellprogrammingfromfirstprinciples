@@ -48,7 +48,6 @@ executables:
       - sort
       - split
       - time
-      - random
 
 tests:
   FirstStackProject-test:

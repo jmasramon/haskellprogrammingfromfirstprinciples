@@ -1,30 +1,23 @@
 module Main where
 
+import Lib
 import qualified Data.Text as T
+import TimeSeries
+import Monads
 import System.IO
+import Route
+import Hinq
+import DotNotation
+import DetermineType
+import Recursion
+import Lists
+import Cipher
+import Folding
 import ADTs
 import Adversity
-import AGT
-import BinaryTree
-import Cipher
-import Cup
-import DetermineType
-import DotNotation
-import Folding
-import Hangman
-import Hinq
-import Lib
-import Lists
-import Monads
-import Monoids
-import MonoidSemigroup
-import Polish
-import Recursion
-import Robot
-import Route
-import TimeSeries
 import Unfolds
-import WordNumber
+import BinaryTree
+import MonoidSemigroup
 
 
 -- type FirstName = String
@@ -41,12 +34,12 @@ import WordNumber
 -- data BloodType = BloodType ABOType RhType
 
 -- data Patient = Patient Name Sex Age Height BloodType
--- data PatientR = PatientR { name :: Name
+-- data PatientR = PatientR { name :: Name 
 --                          , sex :: Sex
 --                          , age :: Age
 --                          , height :: Height
 --                          , bloodType :: BloodType}
--- class Describable a where
+-- class Describable a where 
 --   describe :: a -> String
 
 -- data Icecream = Vanilla | Chocolate deriving (Show, Eq, Ord)
@@ -77,8 +70,8 @@ import WordNumber
 -- lastName patientName = snd patientName
 
 -- showName :: Name -> String
--- showName (Name f l) = f ++ " " ++ l
--- showName (NameWM f m l) = f ++ " " ++ m ++ " " ++ l
+-- showName (Name f l) = f ++ " " ++ l 
+-- showName (NameWM f m l) = f ++ " " ++ m ++ " " ++ l 
 
 -- patientInfo :: FirstName -> LastName -> Age -> Height -> String
 -- patientInfo fname lname age height = name ++ " " ++ ageHeight
@@ -123,7 +116,7 @@ import WordNumber
 -- rotN :: (Bounded a, Enum a) => Int -> a -> a
 -- rotN alphabetSize c = toEnum rotation
 --   where halfAlphabet = alphabetSize `div` 2
---         offset = fromEnum c + halfAlphabet
+--         offset = fromEnum c + halfAlphabet 
 --         rotation = offset `mod` alphabetSize
 
 -- rotChar :: Char -> Char
@@ -178,7 +171,7 @@ import WordNumber
 -- type Events = [String]
 -- type Probs = [Double]
 -- data PTable = PTable Events Probs
-
+        
 -- createPTable :: Events -> Probs -> PTable
 -- createPTable events probs = PTable events normalizedProbs
 --  where
@@ -210,11 +203,11 @@ import WordNumber
 --   (<>) (PTable e1 p1) (PTable e2 p2) = createPTable newEvents newProbs
 --     where newEvents = combineEvents e1 e2
 --           newProbs = combineProbs p1 p2
-
+          
 -- instance Monoid PTable where
 --   mempty = PTable [] []
 --   mappend = (<>)
-
+  
 -- toInts :: String -> [Int]
 -- toInts = map read . lines
 
@@ -236,7 +229,7 @@ main = do
   -- let aPatient = Patient (Name "Jordi" "Masramon") Male 50 91 (BloodType O Pos)
   -- let aPatientR = PatientR { name = Name "Jordi" "Masramon"
   --                          , sex = Male
-  --                          , age = 50
+  --                          , age = 50 
   --                          , height = 91
   --                          , bloodType = BloodType O Pos}
 
@@ -272,9 +265,9 @@ main = do
   -- putStr userInput
   -- print n
 
-  print (roundTrip 4::Int)
-  print (roundTrip '4'::Char)
-  print (roundTrip "hola"::String)
+  print (roundTrip 4::Int) 
+  print (roundTrip '4'::Char) 
+  print (roundTrip "hola"::String) 
   print (id 4)
-
+  
   print "main done"

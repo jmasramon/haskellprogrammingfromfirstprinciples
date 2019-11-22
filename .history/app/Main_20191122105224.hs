@@ -1,30 +1,26 @@
 module Main where
 
+import Lib
 import qualified Data.Text as T
+import TimeSeries
+import Monads
 import System.IO
+import Route
+import Hinq
+import DotNotation
+import DetermineType
+import Recursion
+import Lists
+import Cipher
+import Folding
 import ADTs
 import Adversity
-import AGT
-import BinaryTree
-import Cipher
-import Cup
-import DetermineType
-import DotNotation
-import Folding
-import Hangman
-import Hinq
-import Lib
-import Lists
-import Monads
-import Monoids
-import MonoidSemigroup
-import Polish
-import Recursion
-import Robot
-import Route
-import TimeSeries
 import Unfolds
-import WordNumber
+import BinaryTree
+import Monoids
+import Polish
+import Hangman
+import MonoidSemigroup
 
 
 -- type FirstName = String
