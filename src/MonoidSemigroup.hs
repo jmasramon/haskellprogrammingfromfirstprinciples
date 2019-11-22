@@ -108,7 +108,13 @@ instance Semigroup (Or a b) where
   (<>) (Snd x) (_) = Snd x
   (<>) (Fst _) (Fst y) = Fst y
 
-newtype Combine a b = Combine { unCombine :: a -> b }
+newtype Combine a b = Combine { unCombine ::  a -> b }
 
-instance (Semigroup a, Semigroup b) => Semigroup (Combine a b) where
+instance (Semigroup b) => Semigroup (Combine a b) where
   (<>) (Combine f) (Combine g) = Combine (\x-> f x <> g x)
+
+newtype Comp a =
+    Comp { unComp :: a -> a }
+
+instance (Semigroup a) => Semigroup (Comp a) where
+  (<>) (Comp x) (Comp y) = Comp (x<>y)
