@@ -16,7 +16,7 @@ import Hinq
 import Lib
 import Lists
 import Monads
-import Monoids
+import Monoids as Mons
 import MonoidSemigroup
 import Polish
 import Recursion

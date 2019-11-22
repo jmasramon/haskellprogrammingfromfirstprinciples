@@ -13,7 +13,7 @@ instance Semigroup a => Semigroup (Optional a) where
   (<>) (Only x) (Only y)= Only (x <> y)
 
 
-instance Monoid a => Monoid (Optional a) where 
+instance Monoid a => Monoid (Optional a) where
   mempty = Nada
   mappend = (<>)
 
@@ -36,10 +36,10 @@ madlibbinBetter' :: Exclamation
   -> Noun
   -> Adjective
   -> String
-madlibbinBetter' e adv noun adj = 
-  mconcat [e, "! he said ", 
-    adv, " as he jumped into his car ", 
-    noun, " and drove off with his " , 
+madlibbinBetter' e adv noun adj =
+  mconcat [e, "! he said ",
+    adv, " as he jumped into his car ",
+    noun, " and drove off with his " ,
     adj , " wife."]
 
 
@@ -52,7 +52,7 @@ instance Semigroup (First' a) where
   (<>) (First'  z@(Only _)) (First' Nada)= First' z
   (<>) (First' z@(Only _)) (First' (Only _))= First' z
 
-instance Monoid (First' a) where 
+instance Monoid (First' a) where
   mempty = (First' Nada)
   mappend = (<>)
 
@@ -67,7 +67,7 @@ type FirstMappend =
   -> Bool
 type FstId = First' String -> Bool
 
-data Trivial = Trivial deriving (Eq, Show) 
+data Trivial = Trivial deriving (Eq, Show)
 
 instance Semigroup Trivial where
   _ <> _ = Trivial
@@ -99,7 +99,7 @@ newtype BoolDisj = BoolDisj Bool deriving Show
 instance Semigroup BoolDisj where
   BoolDisj x <> BoolDisj y = BoolDisj (x || y)
 
-data Or a b = 
+data Or a b =
     Fst a
   | Snd b deriving Show
 
@@ -107,8 +107,8 @@ instance Semigroup (Or a b) where
   (<>) (Fst _) (Snd y) = Snd y
   (<>) (Snd x) (_) = Snd x
   (<>) (Fst _) (Fst y) = Fst y
-  
-newtype Combine a b = Combine { unCombine :: (a -> b) } 
+
+newtype Combine a b = Combine { unCombine :: a -> b }
 
 instance (Semigroup a, Semigroup b) => Semigroup (Combine a b) where
-  (<>) (Combine f) (Combine g) = Combine (f <> g)
+  (<>) (Combine f) (Combine g) = Combine (\x-> f x <> g x)
