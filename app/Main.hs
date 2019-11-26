@@ -11,6 +11,7 @@ import Cup
 import DetermineType
 import DotNotation
 import Folding
+import Functor
 import Hangman
 import Hinq
 import Lib
