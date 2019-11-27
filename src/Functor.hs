@@ -2,7 +2,7 @@
 
 module Functor where
 
-a = fmap (+1) $ read "[1]" :: [Int]
+a = (+1) <$> read "[1]" :: [Int]
 
 b =(fmap . fmap) (++ "lol") (Just ["Hi,", "Hello"])
 
@@ -13,7 +13,7 @@ d = fmap ((return '1' ++) . show) (\x -> [x, 1..3])
 e :: IO Integer
 e = let 
       ioi = readIO "1" :: IO Integer
-      changed = fmap read $ fmap (("123"++) . show) ioi 
+      changed = fmap (read . ("123"++) . show) ioi 
     in fmap (*3) changed
 
 newtype Identity a = Identity a
@@ -51,7 +51,7 @@ data Possibly a = LolNope
 
 instance Functor Possibly where 
   fmap f (Yeppers x)= Yeppers (f x)
-  fmap _ (LolNope)= LolNope
+  fmap _ LolNope = LolNope
 
 data Sum a b =  First a
               | Second b deriving (Eq, Show)
@@ -108,7 +108,7 @@ instance Functor (Quant a) where
   fmap f (Desk a) = Desk a
   fmap f (Bloor b) = Bloor (f b)
 
-data K a b= K a
+newtype K a b= K a
 instance Functor (K a) where 
   fmap f (K a) = K a
 
@@ -119,26 +119,26 @@ newtype K' a b = K' a
 instance Functor (Flip K' a) where
   fmap f (Flip (K' a)) = Flip (K' (f a))
 
-data EvilGoateeConst a b = GoatyConst b
+newtype EvilGoateeConst a b = GoatyConst b
 
 instance Functor (EvilGoateeConst a) where
   fmap f (GoatyConst b) = GoatyConst (f b)
 
-data LiftItOut f a = LiftItOut (f a)
+newtype LiftItOut f a = LiftItOut (f a)
 instance (Functor f) => Functor (LiftItOut f) where
-  fmap g (LiftItOut (fa)) = LiftItOut (fmap g fa)
+  fmap g (LiftItOut fa) = LiftItOut (fmap g fa)
 
 data Parappa f g a = DaWrappa (f a) (g a)
 instance (Functor f, Functor g) => Functor (Parappa f g) where
-  fmap k (DaWrappa (fa) (ga)) = DaWrappa (fmap k fa) (fmap k ga)
+  fmap k (DaWrappa fa ga) = DaWrappa (fmap k fa) (fmap k ga)
 
 data IgnoreOne f g a b = IgnoringSomething (f a) (g b)
 instance (Functor g) => Functor (IgnoreOne f g a) where
-  fmap k (IgnoringSomething (fa) (gb)) = IgnoringSomething (fa) (fmap k gb)
+  fmap k (IgnoringSomething fa gb) = IgnoringSomething fa (fmap k gb)
 
 data Notorious g o a t = Notorious (g o) (g a) (g t)
 instance (Functor g) => Functor (Notorious g o a) where
-  fmap f (Notorious (ga) (gb) (gt)) = Notorious (ga) (gb) (fmap f gt)
+  fmap f (Notorious ga gb gt) = Notorious ga gb (fmap f gt)
 
 data List a = Nil
             | Cons a (List a)
