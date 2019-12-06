@@ -5,6 +5,7 @@ import System.IO
 import ADTs
 import Adversity
 import AGT
+import Aplicative
 import BinaryTree
 import Cipher
 import Cup
