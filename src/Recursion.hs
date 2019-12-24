@@ -27,3 +27,10 @@ div' n d = go n d 0
               | n < d = (counter, n)
               | otherwise  = go (n - d) d (counter + 1)
     
+recMult:: (Eq a, Num a) => a -> a -> a
+recMult x y = go x y 0
+  where
+    go 1 y _ = y 
+    go 0 y _ = 0 
+    go x 0 acc = acc
+    go x y acc = go x (y-1) (acc+x) 

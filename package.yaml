@@ -1,10 +1,10 @@
 name: FirstStackProject
 version: 0.1.0.0
-github: 'githubuser/FirstStackProject'
+github: "githubuser/FirstStackProject"
 license: BSD3
-author: 'Author name here'
-maintainer: 'example@example.com'
-copyright: '2019 Author name here'
+author: "Author name here"
+maintainer: "example@example.com"
+copyright: "2019 Author name here"
 
 extra-source-files:
   - README.md
@@ -23,6 +23,7 @@ dependencies:
   - base >= 4.7 && < 5
   - text
   - containers
+  - hspec
   - QuickCheck
   - quickcheck-instances
   - sort
@@ -60,5 +61,6 @@ tests:
       - -with-rtsopts=-N
     dependencies:
       - FirstStackProject
+      - hspec
       - QuickCheck
       - quickcheck-instances

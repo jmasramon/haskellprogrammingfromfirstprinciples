@@ -24,6 +24,7 @@ import Polish
 import Recursion
 import Robot
 import Route
+import Testing
 import TimeSeries
 import Unfolds
 import WordNumber
@@ -220,9 +221,9 @@ import WordNumber
 -- toInts :: String -> [Int]
 -- toInts = map read . lines
 
-helloPerson name = "Hello " ++ name ++ "!"
+--helloPerson name = "Hello " ++ name ++ "!"
 
-sayHello = print "Whats your name?" >> getLine >>= return . helloPerson >>= putStrLn
+--sayHello = print "Whats your name?" >> getLine >>= return . helloPerson >>= putStrLn
 
 f (a,b) (c, d) = ((b,d), (a, c))
 
