@@ -33,7 +33,13 @@ testAddition = hspec $ do
   describe "property testing" $ do
     it"x+1 is always greater than x" $ do 
       property $ \x -> x+1 > (x::Int)
-  
+  describe "addition properties" $ do 
+    it "associativity" $ do
+      property prop_plusAssociative 
+    it "commutatifitty" $ do
+      property prop_plusCommutative 
+    
+-- Practicing generators
 trivialInt :: Gen Int
 trivialInt = return 2
 
@@ -48,3 +54,25 @@ genTuple = do
   a <- arbitrary 
   b <- arbitrary 
   return (a, b)
+
+-- Some more tests
+plusAssociative :: (Num a, Eq a) => a -> a -> a -> Bool
+plusAssociative x y z = x + (y+z) == (x+y)+z
+
+prop_plusAssociative :: Int -> Int -> Int -> Bool
+prop_plusAssociative x y z = plusAssociative x y z
+
+plusCommutative :: (Num a, Eq a) => a -> a -> Bool
+plusCommutative x y = x+y==y+x
+
+prop_plusCommutative :: Int -> Int -> Bool
+prop_plusCommutative x y = x+y==y+x
+
+-- Gen random generators
+data Fool =
+    Fulse
+  | Frue
+  deriving (Eq, Show)
+
+foolGen:: Gen (Fool)
+foolGen = oneof [return Fulse, return Frue]
