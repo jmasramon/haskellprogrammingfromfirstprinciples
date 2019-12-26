@@ -76,7 +76,7 @@ instance Monoid Trivial where
   mappend = (<>)
   mempty = Trivial
 
-newtype Identity a = Identity a deriving (Show)
+newtype Identity a = Identity a deriving (Eq, Show)
 
 instance Semigroup a => Semigroup (Identity a) where
   Identity x <> Identity y = Identity (x<>y)
@@ -85,7 +85,7 @@ instance Monoid a => Monoid (Identity a) where
   mappend = (<>)
   mempty = Identity mempty
 
-data Two a b = Two a b
+data Two a b = Two a b deriving (Eq, Show)
 
 instance (Semigroup a, Semigroup b) => Semigroup (Two a b) where
   (Two x y) <> (Two z k )= Two (x<>z) (y<>k)
@@ -101,7 +101,7 @@ instance (Semigroup a, Semigroup b, Semigroup c) => Semigroup (Three a b c) wher
 
 --same for Four
 
-newtype BoolConj = BoolConj Bool deriving Show
+newtype BoolConj = BoolConj Bool deriving (Eq, Show)
 
 instance Semigroup BoolConj where
   BoolConj x <> BoolConj y = BoolConj (x && y)
