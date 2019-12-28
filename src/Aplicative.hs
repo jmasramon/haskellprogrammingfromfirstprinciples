@@ -65,6 +65,7 @@ res = const <$> Just "Hello" <*> pure "World"
 
 res2 = (,,,) <$> Just 90 <*> Just 10 <*> Just "Tierness" <*> pure [1, 2, 3]
 
+-- Exercise for List
 
 data List a = Nil
             | Cons a (List a) deriving (Eq, Show)
@@ -80,14 +81,12 @@ instance Functor List where
   fmap _ Nil = Nil
   fmap f (Cons a la) = Cons (f a) (fmap f la)
 
--- instance Applicative List where 
---   pure a = Cons a Nil
---   (<*>) Nil _ = Nil
---   (<*>) _ Nil = Nil
---   (<*>) (Cons f Nil) (Cons a Nil) = Cons (f a) Nil
---   (<*>) (Cons f Nil) (Cons a la) = Cons (f a) ((<*>) (Cons f Nil) la)
---   --(<*>) (Cons f (Cons g lg)) (Cons a Nil) = Cons (f a) ((<*>) (Cons g lg) (Cons a Nil))   
---   (<*>) (Cons f (Cons g lg)) (Cons a la) = ((<*>) (Cons f Nil) (Cons a la)) <> ((<*>) (Cons g lg) (Cons a la))
+instance Applicative List where 
+  pure a = Cons a Nil
+  (<*>) Nil _ = Nil
+  (<*>) _ Nil = Nil
+  --(<*>) (Cons f fs) as = fmap f as <> (<*>) fs as
+  (<*>) fs xs = flatMap (`fmap` xs) fs
 
 append::List a->List a->List a
 append Nil ys = ys
@@ -104,9 +103,20 @@ concat' = fold append Nil
 flatMap::(a->List b)->List a->List b 
 flatMap f as = concat' $ fmap f as 
 
-instance Applicative List where
-  pure a = Cons a Nil
-  (<*>) Nil _ = Nil
-  (<*>) _ Nil = Nil
-  (<*>) xs ys = undefined  
+-- Exercise for ZipList
+data List' a =
+  Nil'
+  | Cons' a (List' a)
+  deriving (Eq, Show)
+  
+take' :: Int -> List' a -> List' a
+take' 0 xs = xs
+take' _ Nil' = Nil' 
+take' n (x:xs) = Cons' x (take' (n-1) xs) 
 
+instance Functor List' where
+  fmap = undefined
+
+instance Applicative List' where
+  pure = undefined
+  (<*>) = undefined
