@@ -17,6 +17,7 @@ import Hangman
 import Hinq
 import Lib
 import Lists
+import Monad
 import Monads
 import Monoids as Mons
 import MonoidSemigroup
