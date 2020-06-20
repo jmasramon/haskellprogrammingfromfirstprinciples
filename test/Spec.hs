@@ -1,3 +1,5 @@
+{-# OPTIONS_GHC -F -pgmF hspec-discover #-}
+
 import Test.QuickCheck
 import Test.QuickCheck.Instances
 import Lib

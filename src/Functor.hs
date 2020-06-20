@@ -16,11 +16,11 @@ e = let
       changed = fmap (read . ("123"++) . show) ioi 
     in fmap (*3) changed
 
-newtype Identity a = Identity a
+newtype Identity a = Identity a deriving (Eq, Show)
 instance Functor Identity where
   fmap f (Identity a) = Identity $ f a
 
-data Pair a = Pair a a
+data Pair a = Pair a a deriving (Eq, Show)
 instance Functor Pair where
   fmap f (Pair x y) = Pair (f x) (f y)
 

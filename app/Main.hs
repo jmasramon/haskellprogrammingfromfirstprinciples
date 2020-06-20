@@ -17,6 +17,7 @@ import Hangman
 import Hinq
 import Lib
 import Lists
+import Monad
 import Monads
 import Monoids as Mons
 import MonoidSemigroup
@@ -279,6 +280,6 @@ main = do
   print (roundTrip 4::Int)
   print (roundTrip '4'::Char)
   print (roundTrip "hola"::String)
-  print (id 4)
+  print 4
 
   print "main done"

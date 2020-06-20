@@ -26,6 +26,7 @@ dependencies:
   - hspec
   - QuickCheck
   - quickcheck-instances
+  - checkers
   - sort
   - split
   - time
@@ -64,3 +65,4 @@ tests:
       - hspec
       - QuickCheck
       - quickcheck-instances
+      - checkers
