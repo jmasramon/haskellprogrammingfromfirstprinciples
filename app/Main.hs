@@ -20,6 +20,7 @@ import Lists
 import Monads
 import Monoids as Mons
 import MonoidSemigroup
+import Morse
 import Polish
 import Recursion
 import Robot
