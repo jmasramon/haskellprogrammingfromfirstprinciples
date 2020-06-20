@@ -109,14 +109,14 @@ data List' a =
   | Cons' a (List' a)
   deriving (Eq, Show)
   
-take' :: Int -> List' a -> List' a
-take' 0 xs = xs
-take' _ Nil' = Nil' 
-take' n (x:xs) = Cons' x (take' (n-1) xs) 
+-- take' :: Int -> List' a -> List' a
+-- take' 0 xs = xs
+-- take' _ Nil' = Nil' 
+-- take' n (x:xs) = Cons' x (take' (n-1) xs) 
 
-instance Functor List' where
-  fmap = undefined
+-- instance Functor List' where
+--   fmap = undefined
 
-instance Applicative List' where
-  pure = undefined
-  (<*>) = undefined
+-- instance Applicative List' where
+--   pure = undefined
+--   (<*>) = undefined

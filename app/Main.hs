@@ -22,6 +22,7 @@ import Monoids as Mons
 import MonoidSemigroup
 import Morse
 import Polish
+import Reader
 import Recursion
 import Robot
 import Route
