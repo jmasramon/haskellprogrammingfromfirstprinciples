@@ -230,4 +230,3 @@ combineLetters x y z = (x, y, z)
 combos :: [a] -> [b] -> [c] -> [(a, b, c)]
 -- combos = liftA3 combineLetters
 combos = liftA3 (,,)
->>>>>>> 835782e95e1ee8310dd7108ef2220aedee5fa90e

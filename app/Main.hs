@@ -12,6 +12,7 @@ import Cup
 import DetermineType
 import DotNotation
 import Folding
+import Fldable
 import Functor
 import Hangman
 import Hinq
@@ -27,8 +28,10 @@ import Reader
 import Recursion
 import Robot
 import Route
+import SafeRPNCalc
 import Testing
 import TimeSeries
+import TryThings
 import Unfolds
 import WordNumber
 
